@@ -647,7 +647,32 @@ Mapping between parameters of constructor/factory method annotated with `JsonbCr
 
 In case `JsonbProperty` annotation on parameters is not used, parameters should be mapped from JSON fields with the same name. In this case the proper mapping is NOT guaranteed.
 
-In case a field required for a parameter mapping doesn’t exist in JSON document, `JsonbException` MUST be thrown.
+In case a field required for a parameter mapping doesn't exist in JSON document, `JsonbException` MUST be thrown unless it is marked as an optional.
+//link v adoc filu (podivat do JPA napriklad?)
+
+==== Optional JsonbCreator parameters
+//vysvetlit co jsou optional parametry
+
+It is possible to mark all `JsonbCreator` parameters as optional globally, by calling the`JsonbConfig::withOptionalCreatorParameters` method with either `true` to enable or `false` to disable this feature. Default value is `false`.
+
+Implementation must allow setting all parameters to be optional only for certain creators. This is achieved by setting `optionalParameters` property of `JsonbCreator` annotation to `true`.
+
+
+//popsat chovani pri prepnuti na optional, ale nenastaveni JsonbDefaultValue
+
+Implementation must allow making only certain parameters as optional, without setting the global property.
+
+Parameter can be declared an optional:
+
+* Object types have to be annotated with annotation `JsonbNillable`
+* Primitive types have to be annotated with annotation `JsonbDefaultValue`
+* Parameter is `Optional` type
+
+If `JsonbDefaultValue` and `JsonbNillable` are both declared, an exception must be thrown. `JsonbDefaultValue` can be used only on parameters of primitive types, their wrapping types or String types. In other cases, an exception must be thrown.
+
+The `value` property of the `JsonbDefaultValue` is converted to the corresponding type according the type of the parameter. If the value is not compatible with the type it is converted into, an exception must be thrown.
+
+If the parameter is primitive type and property value in the json document was set to `null` value explicitly, an exception must be thrown.
 
 === Custom visibility
 
