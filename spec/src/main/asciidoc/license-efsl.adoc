@@ -14,7 +14,7 @@ endif::[]
 Release: {revdate}
 ....
 
-Copyright (c) 2019, 2020 Eclipse Foundation.
+Copyright (c) 2019, 2022 Eclipse Foundation.
 
 === Eclipse Foundation Specification License
 
@@ -52,9 +52,9 @@ specification is expressly prohibited.
 
 The notice is:
 
-"Copyright (c) 2018, 2020 Eclipse Foundation. This software or
+"Copyright (c) 2018, 2022 Eclipse Foundation. This software or
 document includes material copied from or derived from Jakarta JSON Binding
-https://jakarta.ee/specifications/jsonb/2.0/[]"
+https://jakarta.ee/specifications/jsonb/3.0/[]"
 
 ==== Disclaimers
 
